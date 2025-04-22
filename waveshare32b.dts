@@ -34,7 +34,7 @@
 		target = <&gpio>;
 		__overlay__ {
 			waveshare32b_pins: waveshare32b_pins {
-				brcm,pins = <17 27 22>;
+				brcm,pins = <24 25 22>;
 				brcm,function = <0 0 0>; /* in in in */
 			};
 		};
@@ -59,7 +59,7 @@
 				fps = <25>;
 				bgr = <0>;
 				buswidth = <8>;
-				reset-gpios = <&gpio 27 1>;
+				reset-gpios = <&gpio 25 1>;
 				dc-gpios = <&gpio 22 0>;
 				debug = <0>;
 			};
@@ -69,9 +69,9 @@
 				reg = <1>;
 
 				spi-max-frequency = <2000000>;
-				interrupts = <17 2>; /* high-to-low edge triggered */
+				interrupts = <24 2>; /* high-to-low edge triggered */
 				interrupt-parent = <&gpio>;
-				pendown-gpio = <&gpio 17 1>;
+				pendown-gpio = <&gpio 24 1>;
 				ti,x-plate-ohms = /bits/ 16 <60>;
 				touchscreen-max-pressure = <255>;
 			};
