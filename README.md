@@ -65,13 +65,9 @@ To calibrate in detail, you can build a modified source of
 [xinput-calibrator](https://github.com/kreijack/xinput_calibrator/tree/libinput)
 
 ```
-$ sudo apt-get install git build-essential libx11-dev libxext-dev libxi-dev x11proto-input-dev
-$ git clone https://github.com/kreijack/xinput_calibrator -b libinput
-$ cd xinput_calibrator
-$ ./autogen.sh
-$ ./configure
-$ make
-$ sudo make install
+$ sudo apt install xinput-calibrator
+$ export DISPLAY=:0
+$ xinput_calibrator
 ```
 Configure xinput_calibrator to autostart with X windows.
 
@@ -97,4 +93,16 @@ Section "InputClass"
         MatchProduct "ADS7846 Touchscreen"
         Option "TransformationMatrix" "0.016152 -1.137751 1.062519 1.126908 -0.005470 -0.064818 0.0 0.0 1.0"
 EndSection
+```
+
+Calibrate the matrix with xinupt set-prop
+Adjust the Transformation Matrix: This 3x3 matrix maps input coordinates to screen coordinates. The format is c0 0 c1 0 c2 c3 0 0 1.
+
+- c0 and c2 control X and Y scaling.
+- c1 and c3 control X and Y offset (translation).
+    
+```
+xinput list
+xinput list-props "ADS7846 Touchscreen"
+xinput set-prop "ADS7846 Touchscreen" "Coordinate Transformation Matrix" 1.13 0 -0.1 0 1.11 -0.04 0 0 1
 ```
