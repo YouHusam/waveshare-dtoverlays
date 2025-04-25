@@ -106,3 +106,22 @@ xinput list
 xinput list-props "ADS7846 Touchscreen"
 xinput set-prop "ADS7846 Touchscreen" "Coordinate Transformation Matrix" 1.13 0 -0.1 0 1.11 -0.04 0 0 1
 ```
+
+
+in `/boot/firmware/config.txt` add the following to the bottom:
+
+```
+[all]
+dtparam=audio=on
+dtoverlay=waveshare32b,rotate=90,swapxy=1,speed=22222222
+hdmi_force_hotplug=1
+#max_usb_current=1
+hdmi_group=2
+hdmi_mode=1
+hdmi_mode=87
+hdmi_cvt 320 240 60 1 0 0 0
+hdmi_drive=2
+
+dtoverlay=pi3-miniuart-bt
+gpu_mem=256
+```
